@@ -1,0 +1,9 @@
+@use '../styles/abstracts' as *;
+
+.page {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  min-height: 100vh;
+  padding: space('6');
+}

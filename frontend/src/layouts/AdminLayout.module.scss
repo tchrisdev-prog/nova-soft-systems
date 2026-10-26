@@ -1,0 +1,24 @@
+@use '../styles/abstracts' as *;
+
+.shell {
+  min-height: 100vh;
+}
+
+.main {
+  min-width: 0;
+
+  @include up('lg') {
+    margin-left: 16.5rem;
+  }
+}
+
+.content {
+  width: 100%;
+  max-width: 76rem;
+  padding: space('6') space('4') space('16');
+  outline: none;
+
+  @include up('md') {
+    padding: space('8') space('8') space('16');
+  }
+}

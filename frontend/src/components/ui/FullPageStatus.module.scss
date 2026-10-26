@@ -1,0 +1,30 @@
+@use '../../styles/abstracts' as *;
+
+.page {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: space('4');
+  min-height: 100vh;
+  padding: space('6');
+  text-align: center;
+}
+
+.loading {
+  display: inline-flex;
+  align-items: center;
+  gap: space('2');
+  color: color('text-muted');
+  font-size: font-size('sm');
+}
+
+.title {
+  color: color('ink');
+  font-size: font-size('lg');
+  font-weight: weight('bold');
+}
+
+.text {
+  max-width: 44ch;
+  color: color('text-muted');
+}

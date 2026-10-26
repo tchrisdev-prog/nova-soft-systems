@@ -1,0 +1,216 @@
+@use '../../styles/abstracts' as *;
+
+// Piezas compartidas por las pantallas de clientes y contratos.
+
+.tabs {
+  display: flex;
+  gap: space('1');
+  margin: 0 0 space('5');
+  padding: space('1');
+  width: fit-content;
+  border-radius: radius('md');
+  background: color('surface-sunken');
+}
+
+.tab {
+  padding: space('2') space('4');
+  border-radius: radius('sm');
+  color: color('text-muted');
+  font-size: font-size('sm');
+  font-weight: weight('semibold');
+  text-decoration: none;
+  @include focus-ring;
+
+  &:hover {
+    color: color('ink');
+  }
+}
+
+.tabActive {
+  background: color('surface');
+  color: color('ink');
+  box-shadow: shadow('raised');
+}
+
+// Barra de consumo: lo aprobado en sólido y lo pendiente de aprobar en claro.
+.consumption {
+  display: grid;
+  gap: space('1');
+  min-width: 9rem;
+}
+
+.track {
+  position: relative;
+  height: 0.5rem;
+  overflow: hidden;
+  border-radius: radius('pill');
+  background: color('surface-sunken');
+}
+
+.approved,
+.pending {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  border-radius: radius('pill');
+}
+
+.pending {
+  background: color('primary-soft');
+}
+
+.approved {
+  background: color('primary');
+}
+
+.warning .approved {
+  background: color('warning');
+}
+
+.danger .approved {
+  background: color('danger');
+}
+
+.consumptionText {
+  display: flex;
+  justify-content: space-between;
+  gap: space('2');
+  color: color('text-subtle');
+  font-size: font-size('xs');
+  white-space: nowrap;
+
+  strong {
+    color: color('ink');
+    font-weight: weight('semibold');
+  }
+}
+
+.alerts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space('1');
+}
+
+.noAlerts {
+  color: color('text-subtle');
+  font-size: font-size('xs');
+}
+
+// Tarjetas de indicadores en los detalles.
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: space('4');
+  margin: 0 0 space('6');
+}
+
+.metric {
+  padding: space('4') space('5');
+  @include panel;
+
+  dt {
+    color: color('text-subtle');
+    font-size: font-size('xs');
+    font-weight: weight('semibold');
+  }
+
+  dd {
+    margin: space('1') 0 0;
+    color: color('ink');
+    font-size: font-size('xl');
+    font-weight: weight('bold');
+    letter-spacing: -0.01em;
+  }
+}
+
+.metricDetail {
+  display: block;
+  margin-top: 0.125rem;
+  color: color('text-muted');
+  font-size: font-size('xs');
+  font-weight: weight('regular');
+  letter-spacing: 0;
+}
+
+.section {
+  margin-bottom: space('6');
+  @include panel;
+  overflow: hidden;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: space('3') space('6');
+  padding: space('4') space('5');
+  border-bottom: 1px solid color('border');
+}
+
+.sectionTitle {
+  font-size: font-size('lg');
+}
+
+.sectionText {
+  margin-top: 0.125rem;
+  color: color('text-muted');
+  font-size: font-size('sm');
+}
+
+.sectionBody {
+  padding: space('5');
+}
+
+.headerBadges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: space('2');
+  margin-top: space('2');
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: space('4');
+  margin: 0;
+  padding: space('5');
+
+  dt {
+    margin-bottom: space('1');
+    color: color('text-subtle');
+    font-size: font-size('xs');
+    font-weight: weight('semibold');
+  }
+
+  dd {
+    margin: 0;
+    color: color('ink');
+    font-size: font-size('sm');
+    overflow-wrap: anywhere;
+  }
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: space('1');
+  margin-bottom: space('2');
+  border-radius: radius('xs');
+  color: color('text-muted');
+  font-size: font-size('sm');
+  font-weight: weight('medium');
+  text-decoration: none;
+  @include focus-ring;
+
+  &:hover {
+    color: color('primary');
+  }
+}
+
+.alertBanner {
+  display: grid;
+  gap: space('2');
+  margin-bottom: space('6');
+}

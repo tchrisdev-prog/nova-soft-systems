@@ -1,0 +1,108 @@
+@use '../styles/abstracts' as *;
+
+// Estilos compartidos por las páginas administrativas con listados.
+
+.panel {
+  @include panel;
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: space('3');
+  padding: space('4') space('5');
+  border-bottom: 1px solid color('border');
+}
+
+.filter {
+  flex: 1 1 12rem;
+
+  @include up('md') {
+    flex: 0 1 13rem;
+  }
+
+
+  label {
+    @include visually-hidden;
+  }
+}
+
+.primaryLink {
+  display: inline-block;
+  border-radius: radius('xs');
+  color: color('ink');
+  font-weight: weight('semibold');
+  text-decoration: none;
+  @include focus-ring;
+
+  &:hover {
+    color: color('primary');
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.primaryText {
+  display: block;
+  color: color('ink');
+  font-weight: weight('semibold');
+}
+
+.secondary {
+  display: flex;
+  align-items: center;
+  gap: space('2');
+  margin-top: 0.125rem;
+  color: color('text-subtle');
+  font-size: font-size('xs');
+  overflow-wrap: anywhere;
+}
+
+.inlineBadge {
+  flex: none;
+}
+
+.muted {
+  max-width: 28rem;
+  color: color('text-muted');
+}
+
+.placeholder {
+  color: color('text-subtle');
+  font-style: italic;
+}
+
+.rowActions {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  gap: space('1');
+
+  @include down('md') {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space('1');
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+// Lista de consecuencias dentro de una confirmación (por ejemplo, al eliminar una cuenta).
+.consequences {
+  display: grid;
+  gap: space('2');
+  margin: 0;
+  padding-left: space('5');
+  list-style: disc;
+  color: color('text');
+  line-height: 1.45;
+}

@@ -1,0 +1,145 @@
+@use '../../styles/abstracts' as *;
+
+.section {
+  padding: space('16') 0;
+  background: color('ink');
+  color: color('on-dark');
+
+  @include up('lg') {
+    padding: space('24') 0;
+  }
+}
+
+.inner {
+  @include container;
+  display: grid;
+  gap: space('12');
+}
+
+.header {
+  display: grid;
+  gap: space('4');
+  max-width: 48rem;
+}
+
+.title {
+  color: #fff;
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  font-weight: weight('black');
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  max-width: 60ch;
+  color: color('on-dark-muted');
+  font-size: font-size('lg');
+}
+
+.grid {
+  display: grid;
+  gap: space('12');
+
+  @include up('lg') {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: space('16');
+  }
+}
+
+.steps {
+  @include reset-list;
+  display: grid;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: space('5');
+  padding-bottom: space('8');
+
+  // Línea que une los pasos de la secuencia
+  &:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    top: 2.75rem;
+    bottom: space('2');
+    left: 1.25rem;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.number {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50%;
+  font-weight: weight('bold');
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+
+  .step:last-child & {
+    border-color: color('accent');
+    background: color('accent');
+    color: color('ink');
+  }
+}
+
+.stepTitle {
+  margin-bottom: space('1');
+  color: #fff;
+  font-size: font-size('lg');
+}
+
+.stepText {
+  color: color('on-dark-muted');
+}
+
+.guarantees {
+  align-self: start;
+  padding: space('6');
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: radius('lg');
+  background: color('ink-soft');
+
+  @include up('md') {
+    padding: space('8');
+  }
+}
+
+.guaranteesTitle {
+  display: flex;
+  align-items: center;
+  gap: space('3');
+  margin-bottom: space('5');
+  color: #fff;
+  font-size: font-size('lg');
+
+  svg {
+    color: color('accent');
+  }
+}
+
+.guaranteeList {
+  @include reset-list;
+  display: grid;
+  gap: space('4');
+
+  li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: space('3');
+    color: color('on-dark');
+  }
+}
+
+.check {
+  margin-top: 0.2rem;
+  color: #6fd6bf;
+}

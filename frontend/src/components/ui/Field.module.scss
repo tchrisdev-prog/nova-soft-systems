@@ -1,0 +1,150 @@
+@use '../../styles/abstracts' as *;
+
+.field {
+  display: grid;
+  gap: space('2');
+}
+
+.label {
+  font-size: font-size('sm');
+  font-weight: weight('semibold');
+  color: color('ink');
+}
+
+.required {
+  color: color('danger');
+}
+
+.control {
+  width: 100%;
+  min-height: 2.5rem;
+  padding: space('2') space('3');
+  border: 1px solid color('border-strong');
+  border-radius: radius('sm');
+  background: color('surface');
+  font-size: font-size('sm');
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+
+  &::placeholder {
+    color: color('text-subtle');
+  }
+
+  &:hover:not(:disabled) {
+    border-color: color('text-subtle');
+  }
+
+  &:focus-visible {
+    outline: none;
+    border-color: color('primary');
+    box-shadow: 0 0 0 3px color('primary-soft');
+  }
+
+  &:disabled {
+    background: color('surface-sunken');
+    color: color('text-subtle');
+  }
+}
+
+.textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.select {
+  appearance: none;
+  padding-right: space('8');
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%234b5370' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+}
+
+.invalid {
+  border-color: color('danger');
+
+  &:focus-visible {
+    border-color: color('danger');
+    box-shadow: 0 0 0 3px color('danger-soft');
+  }
+}
+
+.hint,
+.error {
+  font-size: font-size('xs');
+  line-height: 1.45;
+}
+
+.hint {
+  color: color('text-subtle');
+}
+
+.error {
+  color: color('danger');
+  font-weight: weight('medium');
+}
+
+// Checkbox personalizado (el input nativo sigue siendo el elemento accesible)
+.checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: space('3');
+  cursor: pointer;
+}
+
+.checkboxDisabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.checkboxInput {
+  position: absolute;
+  opacity: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0;
+}
+
+.checkboxBox {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.125rem;
+  border: 1.5px solid color('border-strong');
+  border-radius: radius('xs');
+  background: color('surface');
+  color: transparent;
+  transition: background-color $transition-fast, border-color $transition-fast;
+
+  .checkboxInput:checked + & {
+    background: color('primary');
+    border-color: color('primary');
+    color: #fff;
+  }
+
+  .checkboxInput:focus-visible + & {
+    outline: 2px solid color('primary');
+    outline-offset: 2px;
+  }
+
+  .checkboxInput:not(:disabled):hover + & {
+    border-color: color('primary');
+  }
+}
+
+.checkboxText {
+  display: grid;
+  gap: 0.125rem;
+}
+
+.checkboxLabel {
+  font-size: font-size('sm');
+  font-weight: weight('medium');
+  color: color('ink');
+}
+
+.checkboxDescription {
+  font-size: font-size('xs');
+  color: color('text-subtle');
+}

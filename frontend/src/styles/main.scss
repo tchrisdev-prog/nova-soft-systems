@@ -1,0 +1,7 @@
+// Estilos globales. Los componentes usan CSS Modules (*.module.scss)
+// y consumen tokens desde ./abstracts.
+@use 'base/fonts';
+@use 'base/root';
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/utilities';

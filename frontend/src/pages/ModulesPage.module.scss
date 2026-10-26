@@ -1,0 +1,78 @@
+@use '../styles/abstracts' as *;
+
+.list {
+  @include reset-list;
+  @include panel;
+  overflow: hidden;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: space('4');
+  padding: space('5') space('6');
+
+  & + & {
+    border-top: 1px solid color('border');
+  }
+
+  @include up('md') {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: radius('md');
+
+  .active & {
+    background: color('primary');
+    color: #fff;
+  }
+
+  .planned &,
+  .inactive & {
+    border: 1.5px dashed color('border-strong');
+    color: color('text-subtle');
+  }
+}
+
+.body {
+  display: grid;
+  gap: space('1');
+  min-width: 0;
+}
+
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: space('2') space('3');
+}
+
+.name {
+  font-size: font-size('lg');
+}
+
+.description {
+  color: color('text-muted');
+  font-size: font-size('sm');
+}
+
+.access {
+  color: color('text-subtle');
+  font-size: font-size('xs');
+}
+
+.open {
+  grid-column: 2;
+  justify-self: start;
+
+  @include up('md') {
+    grid-column: auto;
+  }
+}

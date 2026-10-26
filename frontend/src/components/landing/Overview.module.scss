@@ -1,0 +1,119 @@
+@use '../../styles/abstracts' as *;
+
+.section {
+  padding: space('16') 0;
+  background: color('surface');
+  border-block: 1px solid color('border');
+
+  @include up('lg') {
+    padding: space('24') 0;
+  }
+}
+
+.inner {
+  @include container;
+  display: grid;
+  gap: space('12');
+}
+
+.intro {
+  display: grid;
+  gap: space('6');
+
+  @include up('lg') {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: space('16');
+  }
+}
+
+.title {
+  max-width: 18ch;
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  font-weight: weight('black');
+  letter-spacing: -0.03em;
+}
+
+.body {
+  display: grid;
+  gap: space('4');
+  max-width: 60ch;
+  color: color('text-muted');
+  font-size: font-size('lg');
+}
+
+.chain {
+  @include reset-list;
+  display: grid;
+  gap: space('3');
+  counter-reset: chain;
+
+  @include up('md') {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0;
+  }
+}
+
+.step {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: space('2');
+  padding: space('5');
+  border: 1px solid color('border');
+  border-radius: radius('md');
+  background: color('page');
+
+  @include up('md') {
+    border-radius: 0;
+    margin-left: -1px;
+
+    &:first-child {
+      border-radius: radius('md') 0 0 radius('md');
+      margin-left: 0;
+    }
+
+    &:last-child {
+      border-radius: 0 radius('md') radius('md') 0;
+    }
+
+    // Conector entre eslabones
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 2.1rem;
+      right: -0.45rem;
+      z-index: 1;
+      width: 0.8rem;
+      height: 0.8rem;
+      border-top: 1.5px solid color('border-strong');
+      border-right: 1.5px solid color('border-strong');
+      background: color('page');
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.stepIcon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: space('2');
+  border-radius: radius('sm');
+  background: color('primary-soft');
+  color: color('primary');
+}
+
+.step:last-child .stepIcon {
+  background: color('primary');
+  color: #fff;
+}
+
+.stepTitle {
+  font-size: font-size('lg');
+}
+
+.stepText {
+  font-size: font-size('sm');
+  color: color('text-muted');
+}

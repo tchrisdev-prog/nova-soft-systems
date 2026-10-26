@@ -1,0 +1,104 @@
+@use '../../styles/abstracts' as *;
+
+.grid {
+  display: grid;
+  align-items: start;
+  gap: space('4');
+
+  @include up('sm') {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.full {
+  @include up('sm') {
+    grid-column: 1 / -1;
+  }
+}
+
+.contactDraft {
+  display: grid;
+  gap: space('3');
+  padding: space('4');
+  border: 1px solid color('border');
+  border-radius: radius('md');
+  background: color('page');
+}
+
+.contactDraftHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: space('2');
+  color: color('ink');
+  font-size: font-size('sm');
+  font-weight: weight('semibold');
+}
+
+.contacts {
+  display: grid;
+  gap: space('3');
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @include up('md') {
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  }
+}
+
+.contact {
+  display: grid;
+  gap: space('2');
+  align-content: start;
+  padding: space('4');
+  border: 1px solid color('border');
+  border-radius: radius('md');
+}
+
+.contactPrimary {
+  border-color: color('primary');
+  box-shadow: inset 3px 0 0 color('primary');
+}
+
+.contactTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: space('2');
+}
+
+.contactName {
+  color: color('ink');
+  font-weight: weight('semibold');
+}
+
+.contactPosition {
+  color: color('text-muted');
+  font-size: font-size('sm');
+}
+
+.contactLinks {
+  display: grid;
+  gap: 0.125rem;
+  font-size: font-size('sm');
+
+  a {
+    color: color('primary');
+    overflow-wrap: anywhere;
+    text-decoration: none;
+    border-radius: radius('xs');
+    @include focus-ring;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.contactActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space('1');
+  margin-top: space('1');
+}

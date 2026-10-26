@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+.idea
+.vscode
+# Variables de docker compose (secretos)
+.env
+
+# Copias locales para borrar (no son parte del proyecto)
+_to_delete/

@@ -1,0 +1,137 @@
+@use '../../styles/abstracts' as *;
+
+.section {
+  padding: space('16') 0;
+  background: color('surface');
+  border-top: 1px solid color('border');
+
+  @include up('lg') {
+    padding: space('24') 0;
+  }
+}
+
+.inner {
+  @include container;
+  display: grid;
+  gap: space('12');
+}
+
+.header {
+  display: grid;
+  gap: space('4');
+  max-width: 44rem;
+}
+
+.title {
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  font-weight: weight('black');
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  color: color('text-muted');
+  font-size: font-size('lg');
+}
+
+.columns {
+  display: grid;
+  gap: space('12');
+
+  @include up('lg') {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: space('16');
+  }
+}
+
+.group {
+  display: grid;
+  align-content: start;
+  gap: space('4');
+}
+
+.groupTitle {
+  display: flex;
+  align-items: center;
+  gap: space('2');
+  font-size: font-size('md');
+  font-weight: weight('semibold');
+  color: color('text-muted');
+}
+
+.marker {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 3px;
+}
+
+.markerActive {
+  background: color('primary');
+}
+
+.markerPlanned {
+  border: 1.5px dashed color('text-subtle');
+}
+
+.list {
+  @include reset-list;
+  display: grid;
+  gap: space('2');
+
+  .group:last-child & {
+    @include up('md') {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: space('6');
+    }
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: space('4');
+  align-items: start;
+  padding: space('3') 0;
+}
+
+.symbol {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: radius('md');
+  font-size: font-size('lg');
+  font-weight: weight('black');
+  letter-spacing: -0.03em;
+}
+
+.active {
+  background: color('primary');
+  color: #fff;
+}
+
+.core {
+  background: color('ink');
+}
+
+.planned {
+  border: 1.5px dashed color('border-strong');
+  color: color('text-subtle');
+}
+
+.name {
+  font-size: font-size('md');
+  font-weight: weight('bold');
+}
+
+.description {
+  font-size: font-size('sm');
+  color: color('text-muted');
+}
+
+.footnote {
+  margin-top: space('2');
+  padding-top: space('4');
+  border-top: 1px dashed color('border-strong');
+  font-size: font-size('sm');
+  color: color('text-subtle');
+}

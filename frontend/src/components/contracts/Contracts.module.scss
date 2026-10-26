@@ -1,0 +1,348 @@
+@use '../../styles/abstracts' as *;
+
+// Asistente de contrato: pasos y tarjetas de opción.
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space('2');
+  margin: 0 0 space('2');
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: space('2');
+  color: color('text-subtle');
+  font-size: font-size('xs');
+  font-weight: weight('semibold');
+
+  &::before {
+    counter-increment: step;
+    content: counter(step);
+    display: inline-grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1.5px solid color('border-strong');
+    border-radius: radius('pill');
+    font-size: font-size('xs');
+  }
+
+  &:not(:last-child)::after {
+    content: '';
+    width: 1.5rem;
+    height: 1px;
+    background: color('border-strong');
+  }
+}
+
+.stepCurrent {
+  color: color('ink');
+
+  &::before {
+    border-color: color('primary');
+    background: color('primary');
+    color: #fff;
+  }
+}
+
+.stepDone {
+  color: color('text-muted');
+
+  &::before {
+    border-color: color('primary');
+    color: color('primary');
+  }
+}
+
+.cards {
+  display: grid;
+  gap: space('3');
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  @include up('sm') {
+    grid-template-columns: repeat(var(--columns, 2), minmax(0, 1fr));
+  }
+}
+
+.card {
+  position: relative;
+  display: grid;
+  gap: space('1');
+  padding: space('4');
+  border: 1.5px solid color('border');
+  border-radius: radius('md');
+  background: color('surface');
+  cursor: pointer;
+  transition: border-color $transition-fast, background-color $transition-fast;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:hover {
+    border-color: color('primary');
+  }
+
+  &:has(input:focus-visible) {
+    outline: 2px solid color('primary');
+    outline-offset: 2px;
+  }
+}
+
+.fieldError {
+  color: color('danger');
+  font-size: font-size('sm');
+}
+
+.cardSelected {
+  border-color: color('primary');
+  background: color('primary-faint');
+}
+
+.cardTitle {
+  color: color('ink');
+  font-size: font-size('sm');
+  font-weight: weight('semibold');
+}
+
+.cardText {
+  color: color('text-muted');
+  font-size: font-size('xs');
+  line-height: 1.45;
+}
+
+.grid {
+  display: grid;
+  align-items: start;
+  gap: space('4');
+
+  @include up('sm') {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.full {
+  @include up('sm') {
+    grid-column: 1 / -1;
+  }
+}
+
+.review {
+  display: grid;
+  gap: space('3');
+  margin: 0;
+  padding: space('4') space('5');
+  border-radius: radius('md');
+  background: color('page');
+
+  div {
+    display: grid;
+    grid-template-columns: minmax(8rem, 12rem) 1fr;
+    gap: space('3');
+  }
+
+  dt {
+    color: color('text-subtle');
+    font-size: font-size('sm');
+  }
+
+  dd {
+    margin: 0;
+    color: color('ink');
+    font-size: font-size('sm');
+    font-weight: weight('medium');
+  }
+}
+
+.note {
+  color: color('text-muted');
+  font-size: font-size('sm');
+}
+
+// Historial del contrato.
+.timeline {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.event {
+  position: relative;
+  display: grid;
+  gap: space('1');
+  padding: 0 0 space('5') space('6');
+  border-left: 2px solid color('border');
+  margin-left: space('2');
+
+  &:last-child {
+    border-left-color: transparent;
+    padding-bottom: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0.2rem;
+    left: -0.4375rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 2px solid color('surface');
+    border-radius: radius('pill');
+    background: color('primary');
+    box-shadow: 0 0 0 1px color('primary');
+  }
+}
+
+.eventSystem::before {
+  background: color('border-strong');
+  box-shadow: 0 0 0 1px color('border-strong');
+}
+
+.eventTitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: space('2');
+  color: color('ink');
+  font-size: font-size('sm');
+  font-weight: weight('semibold');
+}
+
+.eventMeta {
+  color: color('text-subtle');
+  font-size: font-size('xs');
+  font-weight: weight('regular');
+}
+
+.changes {
+  display: grid;
+  gap: 0.125rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: color('text-muted');
+  font-size: font-size('sm');
+
+  del {
+    color: color('text-subtle');
+  }
+
+  ins {
+    color: color('ink');
+    font-weight: weight('medium');
+    text-decoration: none;
+  }
+}
+
+.more {
+  margin-top: space('4');
+}
+
+.eventNote {
+  max-width: 60ch;
+  padding: space('2') space('3');
+  border-radius: radius('sm');
+  background: color('page');
+  color: color('text');
+  font-size: font-size('sm');
+}
+
+// Gráfica mensual (barras de horas aprobadas frente a horas incluidas).
+.chart {
+  display: grid;
+  gap: space('3');
+}
+
+.bars {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(3rem, 1fr);
+  align-items: end;
+  gap: space('3');
+  height: 12rem;
+  padding-top: space('4');
+  border-bottom: 1px solid color('border-strong');
+  overflow-x: auto;
+}
+
+.barColumn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.bar {
+  min-height: 2px;
+  border-radius: radius('xs') radius('xs') 0 0;
+  background: color('primary');
+}
+
+.barOver {
+  background: color('warning');
+}
+
+.barPending {
+  border-radius: radius('xs') radius('xs') 0 0;
+  background: color('primary-soft');
+}
+
+.included {
+  position: absolute;
+  inset-inline: -0.25rem;
+  border-top: 2px dashed color('ink-soft');
+}
+
+.barLabels {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(3rem, 1fr);
+  gap: space('3');
+  color: color('text-subtle');
+  font-size: font-size('xs');
+  text-align: center;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space('4');
+  color: color('text-muted');
+  font-size: font-size('xs');
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: space('2');
+  }
+
+  i {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 2px;
+  }
+}
+
+.swatchApproved {
+  background: color('primary');
+}
+
+.swatchPending {
+  background: color('primary-soft');
+}
+
+.swatchIncluded {
+  height: 0 !important;
+  border-top: 2px dashed color('ink-soft');
+}

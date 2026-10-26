@@ -1,0 +1,113 @@
+@use '../../styles/abstracts' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: z('sticky');
+  height: var(--header-height);
+  background: rgba(244, 246, 250, 0.86);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color $transition-base;
+}
+
+.scrolled {
+  border-bottom-color: color('border');
+}
+
+.inner {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.brand {
+  border-radius: radius('sm');
+  text-decoration: none;
+  @include focus-ring;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.toggle {
+  @include reset-button;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: radius('sm');
+  color: color('ink');
+  @include focus-ring;
+
+  @include up('md') {
+    display: none;
+  }
+}
+
+.menu {
+  display: none;
+
+  @include down('md') {
+    position: absolute;
+    top: var(--header-height);
+    right: 0;
+    left: 0;
+    padding: space('4') space('5') space('6');
+    border-bottom: 1px solid color('border');
+    background: color('page');
+    box-shadow: shadow('raised');
+  }
+
+  @include up('md') {
+    display: flex;
+    align-items: center;
+    gap: space('8');
+  }
+}
+
+.menuOpen {
+  @include down('md') {
+    display: grid;
+    gap: space('4');
+  }
+}
+
+.links {
+  @include reset-list;
+  display: grid;
+
+  @include up('md') {
+    display: flex;
+    gap: space('6');
+  }
+}
+
+.link {
+  display: block;
+  padding: space('3') 0;
+  border-radius: radius('xs');
+  color: color('text-muted');
+  font-size: font-size('sm');
+  font-weight: weight('medium');
+  text-decoration: none;
+  @include focus-ring;
+
+  &:hover {
+    color: color('ink');
+  }
+
+  @include up('md') {
+    padding: space('2') 0;
+  }
+}
+
+.cta {
+  @include down('md') {
+    width: 100%;
+  }
+}

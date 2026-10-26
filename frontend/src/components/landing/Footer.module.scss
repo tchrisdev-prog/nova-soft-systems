@@ -1,0 +1,66 @@
+@use '../../styles/abstracts' as *;
+
+.footer {
+  border-top: 1px solid color('border');
+  background: color('surface');
+}
+
+.inner {
+  @include container;
+  display: grid;
+  gap: space('8');
+  padding-block: space('12') space('8');
+
+  @include up('md') {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+}
+
+.brand {
+  display: grid;
+  gap: space('4');
+}
+
+.tagline {
+  max-width: 40ch;
+  font-size: font-size('sm');
+  color: color('text-muted');
+}
+
+.links {
+  @include reset-list;
+  display: grid;
+  gap: space('3');
+  font-size: font-size('sm');
+
+  @include up('sm') {
+    grid-template-columns: repeat(2, auto);
+    column-gap: space('12');
+  }
+
+  a {
+    border-radius: radius('xs');
+    color: color('text-muted');
+    text-decoration: none;
+    @include focus-ring;
+
+    &:hover {
+      color: color('ink');
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+}
+
+.bottom {
+  @include container;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: space('2') space('6');
+  padding-block: space('5');
+  border-top: 1px solid color('border');
+  font-size: font-size('xs');
+  color: color('text-subtle');
+}

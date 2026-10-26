@@ -1,0 +1,83 @@
+@use 'sass:map';
+@use 'tokens' as t;
+@use 'functions' as f;
+
+// Media queries mobile-first: @include up('md') { ... }
+@mixin up($breakpoint) {
+  @media (min-width: map.get(t.$breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin down($breakpoint) {
+  @media (max-width: (map.get(t.$breakpoints, $breakpoint) - 0.02px)) {
+    @content;
+  }
+}
+
+// Anillo de foco visible y consistente (solo con teclado).
+@mixin focus-ring($color: f.color('primary'), $offset: 2px) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: $offset;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  max-width: t.$container-width;
+  margin-inline: auto;
+  padding-inline: f.space('5');
+
+  @include up('md') {
+    padding-inline: f.space('8');
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin reset-button {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+@mixin reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin motion-safe {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Superficie estándar para paneles administrativos.
+@mixin panel {
+  background: f.color('surface');
+  border: 1px solid f.color('border');
+  border-radius: f.radius('lg');
+}

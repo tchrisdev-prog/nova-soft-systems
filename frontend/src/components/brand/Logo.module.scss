@@ -1,0 +1,45 @@
+@use '../../styles/abstracts' as *;
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: space('3');
+  font-size: font-size('md');
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.mark {
+  flex: none;
+  border-radius: 22%;
+}
+
+.wordmark {
+  font-weight: weight('medium');
+  letter-spacing: -0.01em;
+}
+
+.nova,
+.sync {
+  font-weight: weight('black');
+}
+
+.dark {
+  color: color('ink');
+
+  .sync {
+    color: color('primary');
+  }
+}
+
+.light {
+  color: #fff;
+
+  .sync {
+    color: color('accent');
+  }
+
+  .systems {
+    color: color('on-dark');
+  }
+}

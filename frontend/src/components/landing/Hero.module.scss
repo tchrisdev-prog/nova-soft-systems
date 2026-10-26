@@ -1,0 +1,69 @@
+@use '../../styles/abstracts' as *;
+
+.hero {
+  padding: space('10') 0 space('16');
+
+  @include up('lg') {
+    padding: space('16') 0 space('24');
+  }
+}
+
+.inner {
+  @include container;
+  display: grid;
+  gap: space('12');
+  align-items: center;
+
+  @include up('lg') {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: space('16');
+  }
+}
+
+.copy {
+  display: grid;
+  gap: space('6');
+}
+
+.title {
+  max-width: 14ch;
+  font-size: font-size('display');
+  font-weight: weight('black');
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.lead {
+  max-width: 52ch;
+  font-size: font-size('lg');
+  line-height: 1.6;
+  color: color('text-muted');
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space('3');
+  margin-top: space('2');
+
+  @include down('sm') {
+    > * {
+      width: 100%;
+    }
+  }
+}
+
+.note {
+  font-size: font-size('sm');
+  color: color('text-subtle');
+}
+
+.visual {
+  width: 100%;
+  max-width: 34rem;
+  justify-self: center;
+
+  @include up('lg') {
+    justify-self: end;
+  }
+}

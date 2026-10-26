@@ -1,0 +1,134 @@
+@use '../../styles/abstracts' as *;
+
+$width: 16.5rem;
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: z('sidebar');
+  display: flex;
+  flex-direction: column;
+  width: $width;
+  background: color('ink');
+  color: color('on-dark');
+  transform: translateX(-100%);
+  transition: transform $transition-base;
+
+  @include up('lg') {
+    transform: none;
+  }
+}
+
+.open {
+  transform: none;
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: z('sidebar');
+  background: rgba(12, 19, 38, 0.48);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity $transition-base;
+
+  @include up('lg') {
+    display: none;
+  }
+}
+
+.scrimVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  padding: 0 space('5');
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: font-size('sm');
+}
+
+.close {
+  @include reset-button;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: radius('sm');
+  color: color('on-dark-muted');
+  @include focus-ring(color('accent'));
+
+  @include up('lg') {
+    display: none;
+  }
+}
+
+.nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: space('4') space('3') space('8');
+}
+
+.list {
+  @include reset-list;
+  display: grid;
+  gap: 2px;
+}
+
+.group {
+  margin-top: space('6');
+}
+
+.groupTitle {
+  margin: 0 0 space('2');
+  padding: 0 space('3');
+  color: color('on-dark-muted');
+  font-size: font-size('xs');
+  font-weight: weight('semibold');
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: space('3');
+  min-height: 2.5rem;
+  padding: 0 space('3');
+  border-radius: radius('sm');
+  color: color('on-dark');
+  font-size: font-size('sm');
+  font-weight: weight('medium');
+  text-decoration: none;
+  @include focus-ring(color('accent'), -2px);
+
+  svg {
+    color: color('on-dark-muted');
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+}
+
+.active {
+  background: color('ink-soft');
+  color: #fff;
+  box-shadow: inset 3px 0 0 color('accent');
+
+  svg {
+    color: color('accent');
+  }
+}
+
+.planned {
+  display: flex;
+  align-items: center;
+  gap: space('3');
+  min-height: 2.25rem;
+  padding: 0 space('3');
+  color: rgba(169, 174, 208, 0.7);
+  font-size: font-size('sm');
+}

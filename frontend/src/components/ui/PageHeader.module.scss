@@ -1,0 +1,36 @@
+@use '../../styles/abstracts' as *;
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: space('4') space('6');
+  margin-bottom: space('6');
+}
+
+.text {
+  display: grid;
+  gap: space('2');
+  min-width: 0;
+}
+
+.title {
+  font-size: font-size('2xl');
+  font-weight: weight('bold');
+
+  @include up('md') {
+    font-size: font-size('3xl');
+  }
+}
+
+.description {
+  max-width: 64ch;
+  color: color('text-muted');
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space('3');
+}

@@ -1,0 +1,199 @@
+@use '../styles/abstracts' as *;
+
+.metrics {
+  @include panel;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  margin: 0 0 space('6');
+  overflow: hidden;
+}
+
+.metric {
+  display: grid;
+  gap: space('2');
+  padding: space('5') space('6');
+  border-right: 1px solid color('border');
+  border-bottom: 1px solid color('border');
+  margin: 0 -1px -1px 0;
+}
+
+.metricLabel {
+  color: color('text-subtle');
+  font-size: font-size('sm');
+  font-weight: weight('medium');
+}
+
+.metricValue {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: space('2');
+  margin: 0;
+  color: color('ink');
+  font-size: font-size('3xl');
+  font-weight: weight('black');
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.metricDetail {
+  color: color('text-muted');
+  font-size: font-size('sm');
+  font-weight: weight('regular');
+  letter-spacing: 0;
+}
+
+.skeleton,
+.skeletonValue {
+  display: block;
+  border-radius: radius('xs');
+  background: color('surface-sunken');
+}
+
+.skeleton {
+  width: 60%;
+  height: 0.75rem;
+}
+
+.skeletonValue {
+  width: 40%;
+  height: 2rem;
+}
+
+.columns {
+  display: grid;
+  gap: space('6');
+  align-items: start;
+
+  @include up('xl') {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+}
+
+.panel {
+  @include panel;
+  overflow: hidden;
+}
+
+.panelHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: space('2') space('4');
+  padding: space('5') space('6');
+  border-bottom: 1px solid color('border');
+}
+
+.panelTitle {
+  font-size: font-size('lg');
+}
+
+.panelLink {
+  border-radius: radius('xs');
+  color: color('primary');
+  font-size: font-size('sm');
+  font-weight: weight('semibold');
+  text-decoration: none;
+  @include focus-ring;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.moduleList {
+  @include reset-list;
+
+  li + li {
+    border-top: 1px solid color('border');
+  }
+}
+
+.moduleLink {
+  display: flex;
+  align-items: center;
+  gap: space('4');
+  padding: space('4') space('6');
+  color: inherit;
+  text-decoration: none;
+  @include focus-ring(color('primary'), -3px);
+
+  &:hover {
+    background: color('primary-faint');
+
+    .chevron {
+      color: color('primary');
+      transform: translateX(2px);
+    }
+  }
+}
+
+.moduleIcon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: radius('md');
+  background: color('primary');
+  color: #fff;
+}
+
+.moduleText {
+  display: grid;
+  flex: 1;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.moduleName {
+  color: color('ink');
+  font-weight: weight('semibold');
+}
+
+.moduleDescription {
+  color: color('text-muted');
+  font-size: font-size('sm');
+}
+
+.chevron {
+  flex: none;
+  color: color('text-subtle');
+  transition: transform $transition-fast;
+}
+
+.activity {
+  @include reset-list;
+  padding: space('2') 0;
+}
+
+.activityItem {
+  display: grid;
+  gap: 0.125rem;
+  padding: space('3') space('6');
+}
+
+.activityAction {
+  color: color('ink');
+  font-size: font-size('sm');
+  font-weight: weight('semibold');
+}
+
+.activityMeta {
+  color: color('text-subtle');
+  font-size: font-size('xs');
+}
+
+.activitySummary {
+  color: color('text-muted');
+  font-size: font-size('xs');
+  overflow-wrap: anywhere;
+}
+
+.footnote {
+  margin-top: space('6');
+  color: color('text-subtle');
+  font-size: font-size('sm');
+}

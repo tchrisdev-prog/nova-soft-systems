@@ -1,0 +1,115 @@
+@use '../../styles/abstracts' as *;
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: z('sticky');
+  display: flex;
+  align-items: center;
+  gap: space('3');
+  height: var(--header-height);
+  padding: 0 space('4');
+  border-bottom: 1px solid color('border');
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+
+  @include up('md') {
+    padding: 0 space('8');
+  }
+}
+
+.menu {
+  @include reset-button;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: radius('sm');
+  color: color('ink');
+  @include focus-ring;
+
+  @include up('lg') {
+    display: none;
+  }
+}
+
+.spacer {
+  flex: 1;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: space('3');
+  min-width: 0;
+}
+
+.avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: color('primary-soft');
+  color: color('primary-strong');
+  font-size: font-size('sm');
+  font-weight: weight('bold');
+}
+
+.identity {
+  display: none;
+  min-width: 0;
+
+  @include up('sm') {
+    display: grid;
+  }
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: space('2');
+  color: color('ink');
+  font-size: font-size('sm');
+  font-weight: weight('semibold');
+  @include truncate;
+}
+
+.badge {
+  flex: none;
+}
+
+.meta {
+  color: color('text-subtle');
+  font-size: font-size('xs');
+  @include truncate;
+  max-width: 22rem;
+}
+
+.logout {
+  @include reset-button;
+  display: inline-flex;
+  align-items: center;
+  gap: space('2');
+  min-height: 2.25rem;
+  margin-left: space('2');
+  padding: 0 space('3');
+  border: 1px solid color('border');
+  border-radius: radius('sm');
+  color: color('text-muted');
+  font-size: font-size('sm');
+  font-weight: weight('medium');
+  @include focus-ring;
+
+  &:hover:not(:disabled) {
+    border-color: color('border-strong');
+    color: color('ink');
+  }
+}
+
+.logoutLabel {
+  @include down('sm') {
+    @include visually-hidden;
+  }
+}

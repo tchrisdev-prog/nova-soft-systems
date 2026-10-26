@@ -1,0 +1,122 @@
+@use '../styles/abstracts' as *;
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: space('1');
+  justify-self: start;
+  margin-bottom: space('2');
+  border-radius: radius('xs');
+  color: color('text-muted');
+  font-size: font-size('sm');
+  font-weight: weight('medium');
+  text-decoration: none;
+  @include focus-ring;
+
+  &:hover {
+    color: color('primary');
+  }
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: space('4');
+  margin: 0 0 space('6');
+  padding: space('5') space('6');
+  @include panel;
+
+  dt {
+    margin-bottom: space('1');
+    color: color('text-subtle');
+    font-size: font-size('xs');
+    font-weight: weight('semibold');
+  }
+
+  dd {
+    margin: 0;
+    color: color('ink');
+    font-size: font-size('sm');
+  }
+}
+
+.code {
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.link {
+  border-radius: radius('xs');
+  color: color('primary');
+  font-weight: weight('semibold');
+  @include focus-ring;
+}
+
+.panel {
+  @include panel;
+  overflow: hidden;
+}
+
+.panelHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: space('3') space('6');
+  padding: space('5') space('6');
+  border-bottom: 1px solid color('border');
+}
+
+.panelTitle {
+  font-size: font-size('lg');
+}
+
+.panelText {
+  max-width: 64ch;
+  margin-top: space('1');
+  color: color('text-muted');
+  font-size: font-size('sm');
+}
+
+.saveBar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: space('3') space('6');
+  padding: space('4') space('6');
+  border-top: 1px solid color('border');
+  background: color('page');
+}
+
+.saveText {
+  color: color('text-muted');
+  font-size: font-size('sm');
+
+  strong {
+    color: color('ink');
+  }
+}
+
+.saveActions {
+  display: flex;
+  gap: space('3');
+}
+
+.diff {
+  display: grid;
+  gap: space('3');
+
+  ul {
+    margin: space('1') 0 0;
+    padding-left: space('5');
+    color: color('text-muted');
+  }
+}
+
+.diffTitle {
+  color: color('ink');
+  font-weight: weight('semibold');
+}

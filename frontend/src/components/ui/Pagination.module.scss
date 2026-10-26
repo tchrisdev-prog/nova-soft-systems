@@ -1,0 +1,23 @@
+@use '../../styles/abstracts' as *;
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: space('3');
+  padding: space('3') space('5');
+  border-top: 1px solid color('border');
+  font-size: font-size('sm');
+  color: color('text-muted');
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: space('3');
+}
+
+.page {
+  white-space: nowrap;
+}

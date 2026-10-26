@@ -1,0 +1,14 @@
+@use '../../styles/abstracts' as *;
+
+.message {
+  font-size: font-size('sm');
+  color: color('text-muted');
+}
+
+.details {
+  margin-top: space('4');
+  padding: space('3') space('4');
+  border-radius: radius('sm');
+  background: color('page');
+  font-size: font-size('sm');
+}

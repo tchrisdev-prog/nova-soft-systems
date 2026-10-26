@@ -1,0 +1,12 @@
+@use 'sass:map';
+@use '../abstracts/tokens' as t;
+
+:root {
+  @each $name, $value in t.$palette {
+    --color-#{$name}: #{$value};
+  }
+
+  --font-family: #{t.$font-family};
+  --header-height: 4.25rem;
+  color-scheme: light;
+}

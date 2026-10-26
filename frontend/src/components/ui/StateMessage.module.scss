@@ -1,0 +1,47 @@
+@use '../../styles/abstracts' as *;
+
+.state {
+  display: grid;
+  justify-items: center;
+  gap: space('2');
+  padding: space('12') space('6');
+  text-align: center;
+}
+
+.compact {
+  padding: space('8') space('4');
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: space('2');
+  border-radius: radius('md');
+  background: color('primary-faint');
+  color: color('primary');
+}
+
+.error .icon {
+  background: color('danger-soft');
+  color: color('danger');
+}
+
+.title {
+  font-size: font-size('lg');
+}
+
+.message {
+  max-width: 42ch;
+  font-size: font-size('sm');
+  color: color('text-muted');
+}
+
+.action {
+  margin-top: space('3');
+}
+
+.loading {
+  color: color('primary');
+}

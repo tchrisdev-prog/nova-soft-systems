@@ -1,0 +1,132 @@
+@use '../../styles/abstracts' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: space('2');
+  border: 1px solid transparent;
+  border-radius: radius('sm');
+  font-weight: weight('semibold');
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color $transition-fast,
+    border-color $transition-fast,
+    color $transition-fast,
+    box-shadow $transition-fast;
+  @include focus-ring;
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+.label {
+  display: inline-block;
+}
+
+.button svg {
+  flex: none;
+}
+
+// Tamaños
+.sm {
+  min-height: 2rem;
+  padding: 0 space('3');
+  font-size: font-size('sm');
+}
+
+.md {
+  min-height: 2.5rem;
+  padding: 0 space('4');
+  font-size: font-size('sm');
+}
+
+.lg {
+  min-height: 3.25rem;
+  padding: 0 space('6');
+  font-size: font-size('md');
+  border-radius: radius('md');
+}
+
+.block {
+  width: 100%;
+}
+
+// Variantes
+.primary {
+  background: color('primary');
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: color('primary-strong');
+  }
+}
+
+.secondary {
+  background: color('surface');
+  border-color: color('border-strong');
+  color: color('ink');
+
+  &:hover:not(:disabled) {
+    border-color: color('ink');
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: color('text-muted');
+
+  &:hover:not(:disabled) {
+    background: color('surface-sunken');
+    color: color('ink');
+  }
+}
+
+.danger {
+  background: color('danger');
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: #a32a24;
+  }
+}
+
+.dangerGhost {
+  background: transparent;
+  color: color('danger');
+
+  &:hover:not(:disabled) {
+    background: color('danger-soft');
+  }
+}
+
+// Sobre fondos oscuros (sección de seguridad, CTA)
+.light {
+  background: #fff;
+  color: color('ink');
+  @include focus-ring(color('accent'));
+
+  &:hover:not(:disabled) {
+    background: color('primary-soft');
+  }
+}
+
+.outlineLight {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.35);
+  color: color('on-dark');
+  @include focus-ring(color('accent'));
+
+  &:hover:not(:disabled) {
+    border-color: #fff;
+  }
+}
+
+.loading {
+  cursor: progress;
+}

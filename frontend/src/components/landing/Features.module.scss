@@ -1,0 +1,82 @@
+@use '../../styles/abstracts' as *;
+
+.section {
+  padding: space('16') 0;
+
+  @include up('lg') {
+    padding: space('24') 0;
+  }
+}
+
+.inner {
+  @include container;
+  display: grid;
+  gap: space('10');
+
+  @include up('lg') {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: space('16');
+    align-items: start;
+  }
+}
+
+.heading {
+  display: grid;
+  gap: space('4');
+
+  @include up('lg') {
+    position: sticky;
+    top: calc(var(--header-height) + #{space('8')});
+  }
+}
+
+.title {
+  max-width: 16ch;
+  font-size: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  font-weight: weight('black');
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  max-width: 44ch;
+  color: color('text-muted');
+  font-size: font-size('lg');
+}
+
+.list {
+  @include reset-list;
+  display: grid;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: space('5');
+  padding: space('6') 0;
+  border-top: 1px solid color('border');
+
+  &:last-child {
+    border-bottom: 1px solid color('border');
+  }
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: radius('md');
+  border: 1px solid color('border');
+  background: color('surface');
+  color: color('primary');
+}
+
+.itemTitle {
+  margin-bottom: space('1');
+  font-size: font-size('xl');
+}
+
+.itemText {
+  max-width: 56ch;
+  color: color('text-muted');
+}

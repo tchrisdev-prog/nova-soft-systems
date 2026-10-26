@@ -1,0 +1,37 @@
+@use 'sass:map';
+@use 'tokens' as t;
+
+// Acceso a tokens vía CSS custom properties (permite tematizar sin recompilar).
+@function color($name) {
+  @if not map.has-key(t.$palette, $name) {
+    @error 'Color desconocido: #{$name}';
+  }
+  @return var(--color-#{$name});
+}
+
+@function space($step) {
+  @if not map.has-key(t.$space, $step) {
+    @error 'Espaciado desconocido: #{$step}';
+  }
+  @return map.get(t.$space, $step);
+}
+
+@function font-size($name) {
+  @return map.get(t.$font-sizes, $name);
+}
+
+@function weight($name) {
+  @return map.get(t.$font-weights, $name);
+}
+
+@function radius($name) {
+  @return map.get(t.$radius, $name);
+}
+
+@function shadow($name) {
+  @return map.get(t.$shadows, $name);
+}
+
+@function z($layer) {
+  @return map.get(t.$z-layers, $layer);
+}
